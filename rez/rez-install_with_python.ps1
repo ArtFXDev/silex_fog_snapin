@@ -10,7 +10,7 @@ if (-Not(Test-Path -Path "C:\Python37")) {
 Remove-Item -Recurse -Force "c:\rez"
 #if (-Not(Test-Path -Path "c:\rez\rez-2.95.0")) {
 Copy-Item S:\windows\rez-2.95.0 -destination "c:\rez\rez-2.95.0" -Recurse -Force
-& "C:\Python37\python.exe" "c:\rez\rez-2.95.0\install.py" "c:\rez\__install__\"
+& python "c:\rez\rez-2.95.0\install.py" "c:\rez\__install__\"
 #}
 
 # if not rez env
