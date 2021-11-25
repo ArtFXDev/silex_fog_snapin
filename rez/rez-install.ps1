@@ -14,8 +14,9 @@ if ($rez_in_path.length -eq 0) {
 }
 
 # fix python install and install rez
-$python_version=python --version | Select-String -Pattern "Python 2"
-if ($python_version.length -gt 0 -And -Not(Test-Path -Path "C:\Python37")) {
+$python = & python -V 2>&1
+if ($python.length -eq 1) {
+	Remove-Item -Recurse -Force "C:\Python37"
 	Copy-Item S:\windows\Python37 -destination "C:\Python37" -Recurse -Force
 	& "C:\Python37\python.exe" "c:\rez\rez-2.95.0\install.py" "c:\rez\__install__\"
 }
