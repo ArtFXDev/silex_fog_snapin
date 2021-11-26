@@ -13,9 +13,10 @@ if ($rez_in_path.length -eq 0) {
 	[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable('Path', 'Machine')+';C:/rez/__install__/Scripts/rez', [System.EnvironmentVariableTarget]::Machine)
 }
 
-# fix python install and install rez
-$python = & python -V 2>&1
-if ($python.length -eq 1) {
+## fix python install and install rez ##
+# 1. if python exisit ?
+$python=&{python -V} 2>&1
+if (($p -is [System.Management.Automation.ErrorRecord]) -Or ($python.length -eq 1)) {
 	Remove-Item -Recurse -Force "C:\Python37"
 	Copy-Item S:\windows\Python37 -destination "C:\Python37" -Recurse -Force
 	& "C:\Python37\python.exe" "c:\rez\rez-2.95.0\install.py" "c:\rez\__install__\"
