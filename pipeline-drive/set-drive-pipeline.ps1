@@ -1,3 +1,5 @@
+Copy-Item -Path \\192.168.2.112\rez\windows\Montage_marvin.bat -Destination "C:\Users\etudiant\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" -Recurse -force
+
 if((Get-SMBShare -Name "pipeline" -ea 0)){
 	Remove-SmbShare -Name "pipeline" -Force
 }
