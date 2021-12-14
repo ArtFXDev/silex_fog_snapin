@@ -16,3 +16,10 @@ Silex deployment repository.
 |set-drive-pipeline | Set P:\ drive to avoid repath | Tp keep P:\ on reboot, startup scripts for mavin is edited to add P:\ on startup|
 |SilexDesktop | Pipeline Desktop App, to open savem select actions ... | The error message during installation is normal
 |Tractor Blade | Blade tractor installation | needed to render job on computer|
+
+Snapin needed for a new computer is : 
+ - rez-install-from-network
+ - set-drive-pipeline
+ - SilexDesktop
+ - Tractor Blade
+ - Resilio `<PROJECT_NAME>` Install
