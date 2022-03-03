@@ -26,16 +26,23 @@ if ($service.Length -gt 0) {
 	sc.exe delete "gokillprocess"
 	
 	Remove-Item -Force "c:\go_killprocess.exe"
+	Remove-Item -Force "c:\gokillprocess\go_killprocess.exe"
+	Remove-Item -Force "c:\gokillprocess.log"
 }
 
-# Copy .exe to C:/
-Copy-Item S:\windows\nssm\go_killprocess.exe -destination "c:\" -Force
+# create dir
+$process_folder = "C:\gokillprocess"
+IF(!(test-path $process_folder))
+{
+	New-Item -ItemType Directory -Force -Path $process_folder
+}
 
-# Create service
-S:\windows\nssm\nssm.exe install gokillprocess C:\go_killprocess.exe
+# Copy .exe to C:\gokillprocess
+Copy-Item S:\windows\gokillprocess\go_killprocess.exe -destination $process_folder -Force
 
-# for log
-#S:\windows\nssm\nssm.exe set gokillprocess AppStdout C:\service.log
-#S:\windows\nssm\nssm.exe set gokillprocess AppStderr C:\service-error.log
+# create service using sc.exe
+sc.exe create gokillprocess binpath="C:/gokillprocess/go_killprocess.exe" start=auto DisplayName="gokillprocess"
 
-S:\windows\nssm\nssm.exe start gokillprocess
+sc.exe description gokillprocess "gokillprocess"
+net.exe start gokillprocess
+sc.exe query gokillprocess
