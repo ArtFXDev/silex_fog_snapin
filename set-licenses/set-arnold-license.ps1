@@ -1,0 +1,1 @@
+[Environment]::SetEnvironmentVariable("ADSKFLEX_LICENSE_FILE", "@centlic", "Machine")

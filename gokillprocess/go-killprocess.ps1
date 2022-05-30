@@ -46,3 +46,6 @@ sc.exe create gokillprocess binpath="C:/gokillprocess/go_killprocess.exe" start=
 sc.exe description gokillprocess "gokillprocess"
 net.exe start gokillprocess
 sc.exe query gokillprocess
+
+New-NetFirewallRule -DisplayName 'gokillprocessin' -Profile Any -Direction Inbound -Action Allow -Protocol TCP -LocalPort 5119
+New-NetFirewallRule -DisplayName 'gokillprocessout' -Profile Any -Direction Outbound -Action Allow -Protocol TCP -LocalPort 5119
