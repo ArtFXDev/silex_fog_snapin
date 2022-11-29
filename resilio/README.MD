@@ -10,3 +10,5 @@ powershell.exe -ExecutionPolicy Bypass -Noprofile ./attach-sync-conf-to-msi.ps1 
 ```
 
 This will give you a single msi. You can now put this msi in new fog snapin and make the deployment.
+
+Resilio Agent can be download [here](https://connect-download-3-ml.resilio.com/)
